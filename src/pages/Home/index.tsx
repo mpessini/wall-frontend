@@ -1,5 +1,11 @@
+import SignInForm from '../../components/SignInForm'
+
 const Home = () => {
-  return <main>Wall</main>
+  return (
+    <main>
+      <SignInForm />
+    </main>
+  )
 }
 
 export default Home
