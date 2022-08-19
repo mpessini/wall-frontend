@@ -2,11 +2,11 @@ import { useContext } from 'react'
 import Switch from 'react-switch'
 import { ThemeContext } from 'styled-components'
 
-interface IProps {
-  toggleTheme(): void
+type Props = {
+  toggleTheme: () => void
 }
 
-const Header = ({ toggleTheme }: IProps) => {
+const Header = ({ toggleTheme }: Props) => {
   const { colors, title } = useContext(ThemeContext)
   return (
     <header>
