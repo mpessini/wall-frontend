@@ -12,7 +12,7 @@ const SignUp = () => {
       <ButtonComponent
         type="button"
         name="Back To Login"
-        onclick={() => navigate('/')}
+        onClick={() => navigate('/')}
       />
     </main>
   )

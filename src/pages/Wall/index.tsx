@@ -14,7 +14,7 @@ const Wall = () => {
       <ButtonComponent
         type="button"
         name="Sign In"
-        onclick={() => navigate('/')}
+        onClick={() => navigate('/')}
       />
     </main>
   )
