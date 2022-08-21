@@ -1,10 +1,10 @@
 import WallContext from './WallContext'
 import jwtDecode from 'jwt-decode'
+import { AxiosError } from 'axios'
 import { AuthToken, Props, User } from './types'
-import { signIn } from '../services/api'
+import { signIn, signUp } from '../services/api'
 import { useState } from 'react'
 import { getFromLocalStorage } from '../utils/getFromLocalStorage'
-import { AxiosError } from 'axios'
 
 function Provider({ children }: Props) {
   const tokens = getFromLocalStorage('authTokens')
@@ -26,11 +26,32 @@ function Provider({ children }: Props) {
       if (error instanceof AxiosError) {
         return error?.response?.status
       }
+      return 500
+    }
+  }
+
+  const handleSignUp = async (
+    username: string,
+    email: string,
+    password: string
+  ) => {
+    try {
+      const { data, status } = await signUp({ username, email, password })
+      console.log(data, status)
+      if (status === 200) {
+        return status
+      }
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        return error?.response?.status
+      }
+      return 500
     }
   }
 
   const context = {
     handleSignIn,
+    handleSignUp,
     user
   }
 

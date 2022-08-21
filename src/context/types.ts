@@ -1,12 +1,5 @@
 import { ReactNode } from 'react'
 
-export type Context = {
-  handleSignIn: (
-    username: string,
-    password: string
-  ) => Promise<number | undefined>
-}
-
 export type Props = {
   children: ReactNode
 }
@@ -25,8 +18,14 @@ export type User = {
   username: string
 }
 
-export type AxiosError = {
-  response: {
-    status: number
-  }
+export type Context = {
+  handleSignIn: (
+    username: string,
+    password: string
+  ) => Promise<number | undefined>
+  handleSignUp: (
+    username: string,
+    email: string,
+    password: string
+  ) => Promise<number | undefined>
 }

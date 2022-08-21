@@ -6,6 +6,7 @@ type Props = {
   value: string
   onChange: Dispatch<SetStateAction<string>>
   minLength?: number
+  maxLength?: number
   required?: boolean
 }
 
@@ -15,6 +16,7 @@ const InputComponent = ({
   placeholder,
   onChange,
   minLength,
+  maxLength,
   required
 }: Props) => {
   return (
@@ -24,6 +26,7 @@ const InputComponent = ({
       onChange={({ target }) => onChange(target.value)}
       value={value}
       minLength={minLength}
+      maxLength={maxLength}
       required={required}
     />
   )
