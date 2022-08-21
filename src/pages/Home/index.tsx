@@ -1,10 +1,14 @@
-import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { useNavigate, Navigate } from 'react-router-dom'
 import ButtonComponent from '../../components/Button'
 import SignInForm from '../../components/SignInForm'
 import TextComponent from '../../components/Text'
+import WallContext from '../../context/WallContext'
 
 const Home = () => {
+  const { user } = useContext(WallContext)
   const navigate = useNavigate()
+  if (user) return <Navigate to="/wall" />
   return (
     <main>
       <SignInForm />

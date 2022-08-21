@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import WallContext from '../../context/WallContext'
 import ButtonComponent from '../Button'
 import InputComponent from '../Input'
 
 const PostForm = () => {
+  const { authTokens } = useContext(WallContext)
   const [postMessage, setPostMessage] = useState<string>('')
 
   const submitPost = (e: React.FormEvent<HTMLElement>) => {

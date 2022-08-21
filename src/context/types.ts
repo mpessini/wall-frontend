@@ -28,4 +28,7 @@ export type Context = {
     email: string,
     password: string
   ) => Promise<number | undefined>
+  logout: () => void
+  authTokens: AuthToken | null
+  user: User | null
 }
