@@ -4,8 +4,14 @@ import jwtDecode from 'jwt-decode'
 import { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import WallContext from './WallContext'
-import { AuthToken, Props, User } from './types'
-import { createPost, signIn, signUp, updateTokens } from '../services/api'
+import { AuthToken, Post, Props, User } from './types'
+import {
+  getPosts,
+  postCreation,
+  signIn,
+  signUp,
+  updateTokens
+} from '../services/api'
 import { getFromLocalStorage } from '../utils/getFromLocalStorage'
 
 function Provider({ children }: Props) {
@@ -14,6 +20,7 @@ function Provider({ children }: Props) {
   const [user, setUser] = useState<User | null>(
     tokens ? jwtDecode(tokens.access) : null
   )
+  const [posts, setPosts] = useState<Post[]>([])
 
   const navigate = useNavigate()
 
@@ -40,8 +47,8 @@ function Provider({ children }: Props) {
   ) => {
     try {
       await signUp({ username, email, password })
-      const twoAndAHalfSeconds = 2500
       toast.success('User created, you will be redirected')
+      const twoAndAHalfSeconds = 2500
       setTimeout(() => {
         navigate('/')
       }, twoAndAHalfSeconds)
@@ -60,7 +67,7 @@ function Provider({ children }: Props) {
 
   const handlePostCreation = async (post: string, token: string) => {
     try {
-      await createPost(post, token)
+      await postCreation(post, token)
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error?.response?.status === 0) {
@@ -71,6 +78,19 @@ function Provider({ children }: Props) {
           toast.error(`${error[0]}: ${error[1]}`)
         })
       }
+    }
+  }
+
+  const handleGetPosts = async () => {
+    try {
+      const { data } = await getPosts()
+      setPosts(data)
+    } catch (error) {
+      toast.error('Something went wrong.')
+      const twoAndAHalfSeconds = 2500
+      setTimeout(() => {
+        logout()
+      }, twoAndAHalfSeconds)
     }
   }
 
@@ -114,6 +134,7 @@ function Provider({ children }: Props) {
     handleSignIn,
     handleSignUp,
     handlePostCreation,
+    handleGetPosts,
     logout,
     authTokens,
     user

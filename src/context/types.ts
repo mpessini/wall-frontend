@@ -18,9 +18,22 @@ export type User = {
   username: string
 }
 
+export type Post = {
+  id: number
+  owner: {
+    id: number
+    username: string
+  }
+  post: string
+  created_at: string
+  update_at: string
+}
+
 export type Context = {
   handleSignIn: (username: string, password: string) => void
   handleSignUp: (username: string, email: string, password: string) => void
+  handlePostCreation: (post: string, token: string) => void
+  handleGetPosts: () => void
   logout: () => void
   authTokens: AuthToken | null
   user: User | null

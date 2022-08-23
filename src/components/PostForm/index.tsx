@@ -1,17 +1,18 @@
 import { useContext, useState } from 'react'
 import WallContext from '../../context/WallContext'
-import { createPost } from '../../services/api'
 import ButtonComponent from '../Button'
 import InputComponent from '../Input'
 
 const PostForm = () => {
-  const { authTokens } = useContext(WallContext)
+  const { authTokens, handlePostCreation, logout } = useContext(WallContext)
   const [postMessage, setPostMessage] = useState<string>('')
 
   const submitPost = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault()
     if (authTokens?.access) {
-      createPost(postMessage, authTokens.access)
+      handlePostCreation(postMessage, authTokens.access)
+    } else {
+      logout()
     }
   }
   return (
@@ -22,6 +23,8 @@ const PostForm = () => {
           placeholder="Write your message..."
           value={postMessage}
           onChange={setPostMessage}
+          minLength={1}
+          required
         />
         <ButtonComponent type="submit" name="Send" />
       </form>

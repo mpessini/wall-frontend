@@ -26,10 +26,15 @@ export const updateTokens = async (refresh?: string) => {
   return response
 }
 
-export const createPost = async (post: string, token: string) => {
+export const postCreation = async (post: string, token: string) => {
   axiosInstance.defaults.headers.post['Authorization'] = `Bearer ${token}`
-  const response = await axiosInstance.post('post/create/', {
+  const response = await axiosInstance.post('post/new/', {
     post
   })
+  return response
+}
+
+export const getPosts = async () => {
+  const response = await axiosInstance.get('posts/')
   return response
 }
