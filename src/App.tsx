@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { ThemeProvider } from 'styled-components'
+import { DefaultTheme, ThemeProvider } from 'styled-components'
 import GlobalStyles from './styles/GlobalStyles'
 import dark from './styles/themes/dark'
 import light from './styles/themes/light'
@@ -8,9 +7,10 @@ import Header from './components/Header'
 import Home from './pages/Home'
 import SignUp from './pages/SignUp'
 import Wall from './pages/Wall'
+import usePersistedState from './utils/usePersistedState'
 
 function App() {
-  const [theme, setTheme] = useState(light)
+  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light)
 
   const toggleTheme = () => {
     setTheme(theme === light ? dark : light)
