@@ -8,7 +8,6 @@ const validateSignUpInformations = (
   const emailIsValid = emailRegex.test(email)
   const passwordIsValid = password.length >= 8 && password.length <= 50
   const infosIsValid = [usernameIsValid, emailIsValid, passwordIsValid]
-  console.log(usernameIsValid)
   return infosIsValid.every((info) => info)
 }
 

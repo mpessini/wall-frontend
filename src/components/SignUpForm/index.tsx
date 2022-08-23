@@ -1,9 +1,7 @@
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import WallContext from '../../context/WallContext'
-import validateSignUpInformations from '../../utils/validateSignUpInformations'
 import ButtonComponent from '../Button'
 import InputComponent from '../Input'
 
@@ -13,25 +11,13 @@ const SignUpForm = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
-  const navigate = useNavigate()
-
   const submitSignUp = async (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault()
-    const isValid = validateSignUpInformations(username, email, password)
-    if (!isValid) return toast.error('provide valid information.')
-
-    const status = await handleSignUp(username, email, password)
-    if (status === 200) {
-      const twoAndAHalfSeconds = 2500
-      toast.success('User created, you will be redirected')
-      setTimeout(() => {
-        navigate('/')
-      }, twoAndAHalfSeconds)
-    } else if (status === 400) {
-      toast.error('username already exists.')
-    } else {
-      toast.error('Something went wrong.')
+    const anyFieldIsEmpty = [username, email, password].some((field) => !field)
+    if (anyFieldIsEmpty) {
+      return toast.error('Fill in all fields.')
     }
+    handleSignUp(username, email, password)
   }
 
   return (

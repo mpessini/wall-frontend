@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react'
 import WallContext from '../../context/WallContext'
+import { createPost } from '../../services/api'
 import ButtonComponent from '../Button'
 import InputComponent from '../Input'
 
@@ -9,7 +10,9 @@ const PostForm = () => {
 
   const submitPost = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault()
-    console.log(postMessage)
+    if (authTokens?.access) {
+      createPost(postMessage, authTokens.access)
+    }
   }
   return (
     <div>
@@ -20,7 +23,7 @@ const PostForm = () => {
           value={postMessage}
           onChange={setPostMessage}
         />
-        <ButtonComponent type="button" name="Send" />
+        <ButtonComponent type="submit" name="Send" />
       </form>
     </div>
   )

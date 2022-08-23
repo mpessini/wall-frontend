@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import WallContext from '../../context/WallContext'
 import ButtonComponent from '../Button'
@@ -11,18 +10,13 @@ const SignInForm = () => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
-  const navigate = useNavigate()
-
-  const submitSignIn = async (e: React.FormEvent<HTMLElement>) => {
+  const submitSignIn = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault()
-    const status = await handleSignIn(username, password)
-    if (status === 200) {
-      navigate('/wall')
-    } else if (status === 401) {
-      toast.error('Incorrect username or password.')
-    } else {
-      toast.error('Something went wrong.')
+    const anyFieldIsEmpty = [username, password].some((field) => !field)
+    if (anyFieldIsEmpty) {
+      return toast.error('Fill in all fields.')
     }
+    handleSignIn(username, password)
   }
 
   return (

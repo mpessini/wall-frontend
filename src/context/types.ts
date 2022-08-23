@@ -19,15 +19,8 @@ export type User = {
 }
 
 export type Context = {
-  handleSignIn: (
-    username: string,
-    password: string
-  ) => Promise<number | undefined>
-  handleSignUp: (
-    username: string,
-    email: string,
-    password: string
-  ) => Promise<number | undefined>
+  handleSignIn: (username: string, password: string) => void
+  handleSignUp: (username: string, email: string, password: string) => void
   logout: () => void
   authTokens: AuthToken | null
   user: User | null

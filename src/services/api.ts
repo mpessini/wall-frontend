@@ -1,14 +1,10 @@
 import axios from 'axios'
-import { getFromLocalStorage } from '../utils/getFromLocalStorage'
-import { UserCredentials, UserInformations } from './types'
-
-const accessToken = getFromLocalStorage('authTokens')
+import { UserCredentials, UserInformations, Headers } from './types'
 
 const baseURL = 'http://localhost:8000/api/'
 const timeout = 5000
-const headers = {
-  'Content-Type': 'application/json',
-  Authorization: `Bearer ${accessToken?.access}`
+const headers: Headers = {
+  'Content-Type': 'application/json'
 }
 
 const axiosInstance = axios.create({ baseURL, timeout, headers })
@@ -26,6 +22,14 @@ export const signUp = async (userInformations: UserInformations) => {
 export const updateTokens = async (refresh?: string) => {
   const response = await axiosInstance.post('token/refresh/', {
     refresh: refresh
+  })
+  return response
+}
+
+export const createPost = async (post: string, token: string) => {
+  axiosInstance.defaults.headers.post['Authorization'] = `Bearer ${token}`
+  const response = await axiosInstance.post('post/create/', {
+    post
   })
   return response
 }

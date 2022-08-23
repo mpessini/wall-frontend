@@ -8,3 +8,8 @@ export type UserInformations = {
   email: string
   password: string
 }
+
+export type Headers = {
+  'Content-Type': string
+  Authorization?: string
+}

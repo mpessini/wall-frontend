@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 import jwtDecode from 'jwt-decode'
 import { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import WallContext from './WallContext'
 import { AuthToken, Props, User } from './types'
-import { signIn, signUp, updateTokens } from '../services/api'
+import { createPost, signIn, signUp, updateTokens } from '../services/api'
 import { getFromLocalStorage } from '../utils/getFromLocalStorage'
 
 function Provider({ children }: Props) {
@@ -18,18 +19,17 @@ function Provider({ children }: Props) {
 
   const handleSignIn = async (username: string, password: string) => {
     try {
-      const { data, status } = await signIn({ username, password })
-      if (status === 200) {
-        setAuthTokens(data)
-        setUser(jwtDecode(data.access))
-        localStorage.setItem('authTokens', JSON.stringify(data))
-        return status
-      }
+      const { data } = await signIn({ username, password })
+      setAuthTokens(data)
+      setUser(jwtDecode(data.access))
+      localStorage.setItem('authTokens', JSON.stringify(data))
     } catch (error) {
       if (error instanceof AxiosError) {
-        return error?.response?.status
+        if (error?.response?.status === 0) {
+          return toast.error('Something went wrong.')
+        }
+        toast.error('Incorrect username or password')
       }
-      return 500
     }
   }
 
@@ -39,16 +39,38 @@ function Provider({ children }: Props) {
     password: string
   ) => {
     try {
-      const { data, status } = await signUp({ username, email, password })
-      console.log(data, status)
-      if (status === 200) {
-        return status
-      }
+      await signUp({ username, email, password })
+      const twoAndAHalfSeconds = 2500
+      toast.success('User created, you will be redirected')
+      setTimeout(() => {
+        navigate('/')
+      }, twoAndAHalfSeconds)
     } catch (error) {
       if (error instanceof AxiosError) {
-        return error?.response?.status
+        if (error?.response?.status === 0) {
+          return toast.error('Something went wrong.')
+        }
+        const errorMessages = Object.entries(error?.response?.data)
+        errorMessages.forEach((error) => {
+          toast.error(`${error[0]}: ${error[1]}`)
+        })
       }
-      return 500
+    }
+  }
+
+  const handlePostCreation = async (post: string, token: string) => {
+    try {
+      await createPost(post, token)
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        if (error?.response?.status === 0) {
+          return toast.error('Something went wrong.')
+        }
+        const errorMessages = Object.entries(error?.response?.data)
+        errorMessages.forEach((error) => {
+          toast.error(`${error[0]}: ${error[1]}`)
+        })
+      }
     }
   }
 
@@ -91,6 +113,7 @@ function Provider({ children }: Props) {
   const context = {
     handleSignIn,
     handleSignUp,
+    handlePostCreation,
     logout,
     authTokens,
     user
