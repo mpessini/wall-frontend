@@ -24,7 +24,7 @@ export type Post = {
     id: number
     username: string
   }
-  post: string
+  post_message: string
   created_at: string
   update_at: string
 }
@@ -37,4 +37,5 @@ export type Context = {
   logout: () => void
   authTokens: AuthToken | null
   user: User | null
+  posts: Post[]
 }

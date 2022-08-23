@@ -68,6 +68,7 @@ function Provider({ children }: Props) {
   const handlePostCreation = async (post: string, token: string) => {
     try {
       await postCreation(post, token)
+      handleGetPosts()
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error?.response?.status === 0) {
@@ -137,7 +138,8 @@ function Provider({ children }: Props) {
     handleGetPosts,
     logout,
     authTokens,
-    user
+    user,
+    posts
   }
 
   return <WallContext.Provider value={context}>{children}</WallContext.Provider>

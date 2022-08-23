@@ -26,10 +26,10 @@ export const updateTokens = async (refresh?: string) => {
   return response
 }
 
-export const postCreation = async (post: string, token: string) => {
+export const postCreation = async (post_message: string, token: string) => {
   axiosInstance.defaults.headers.post['Authorization'] = `Bearer ${token}`
   const response = await axiosInstance.post('post/new/', {
-    post
+    post_message
   })
   return response
 }

@@ -11,6 +11,7 @@ const PostForm = () => {
     e.preventDefault()
     if (authTokens?.access) {
       handlePostCreation(postMessage, authTokens.access)
+      setPostMessage('')
     } else {
       logout()
     }
