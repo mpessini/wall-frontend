@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import WallContext from '../../context/WallContext'
 import ButtonComponent from '../Button'
 import InputComponent from '../Input'
+import { Form } from './styles'
 
 const PostForm = () => {
   const { authTokens, handlePostCreation, logout } = useContext(WallContext)
@@ -17,8 +18,8 @@ const PostForm = () => {
     }
   }
   return (
-    <div>
-      <form onSubmit={(e) => submitPost(e)}>
+    <>
+      <Form onSubmit={(e) => submitPost(e)}>
         <InputComponent
           type="text"
           placeholder="Write your message..."
@@ -27,9 +28,9 @@ const PostForm = () => {
           minLength={1}
           required
         />
-        <ButtonComponent type="submit" name="Send" />
-      </form>
-    </div>
+        <ButtonComponent type="submit" name="Send" width="20%" />
+      </Form>
+    </>
   )
 }
 export default PostForm

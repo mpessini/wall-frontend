@@ -2,16 +2,25 @@ import { useContext } from 'react'
 import WallContext from '../../context/WallContext'
 import ButtonComponent from '../Button'
 import TextComponent from '../Text'
+import { UserContainer } from './styles'
 
 const PostHeader = () => {
   const { logout, user, authTokens } = useContext(WallContext)
   return (
-    <div>
-      <TextComponent text={`Hello ${user?.username || 'Visitor'}`} />
+    <UserContainer>
+      <TextComponent
+        text={`Hello ${user?.username || 'Visitor'}`}
+        fontWeight="bold"
+      />
       {authTokens && (
-        <ButtonComponent type="button" name="Logout" onClick={logout} />
+        <ButtonComponent
+          type="button"
+          name="Logout"
+          onClick={logout}
+          width="10%"
+        />
       )}
-    </div>
+    </UserContainer>
   )
 }
 export default PostHeader

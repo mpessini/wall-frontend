@@ -14,13 +14,13 @@ const Home = () => {
     <HomeContainer>
       <SignInForm />
       <Container>
-        <TextComponent text="New Here?" />
+        <TextComponent text="New Here?" fontFamily="cursive" />
         <ButtonComponent
           type="button"
           name="Sign Up"
           onClick={() => navigate('/signup')}
         />
-        <TextComponent text="Just want to take a look?" />
+        <TextComponent text="Just want to take a look?" fontFamily="cursive" />
         <ButtonComponent
           type="button"
           name="Enter as a Visitor"

@@ -7,6 +7,7 @@ type ButtonProps = {
 export const Button = styled.button<ButtonProps>`
   height: 50px;
   min-height: 5vh;
+  min-width: 80px;
   width: ${({ width }) => (width ? width : '100%')};
   font-size: 20px;
   font-weight: bold;

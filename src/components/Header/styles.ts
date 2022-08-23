@@ -6,7 +6,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   top: 0;
   width: 100vw;
-  height: 25vh;
+  height: 20vh;
 `
 
 export const ImageLogo = styled.img`

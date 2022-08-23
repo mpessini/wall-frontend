@@ -1,23 +1,24 @@
 import { useContext, useEffect } from 'react'
 import WallContext from '../../context/WallContext'
 import TextComponent from '../Text'
+import { Post, PostsContainer } from './styles'
 
 const PostContainer = () => {
-  const { posts, user, handleGetPosts } = useContext(WallContext)
+  const { posts, handleGetPosts } = useContext(WallContext)
 
   useEffect(() => {
     handleGetPosts()
   }, [])
 
   return (
-    <div>
-      {posts.map(({ id, post_message, owner: { username, id: userId } }) => (
-        <div key={id}>
-          <TextComponent text={username} />
-          <TextComponent text={post_message} />
-        </div>
+    <PostsContainer>
+      {posts.map(({ id, post_message, owner: { username } }) => (
+        <Post key={id}>
+          <TextComponent text={username} fontWeight="bold" />
+          <TextComponent text={post_message} fontSize="25px" />
+        </Post>
       ))}
-    </div>
+    </PostsContainer>
   )
 }
 export default PostContainer

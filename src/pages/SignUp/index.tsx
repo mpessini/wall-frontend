@@ -10,7 +10,7 @@ const SignUp = () => {
     <SignUpContainer>
       <SignUpForm />
       <Container>
-        <TextComponent text="Want to go back?" />
+        <TextComponent text="Want to go back?" fontFamily="cursive" />
         <ButtonComponent
           type="button"
           name="Back To Login"

@@ -5,24 +5,27 @@ import PostContainer from '../../components/PostContainer'
 import PostForm from '../../components/PostForm'
 import PostHeader from '../../components/PostHeader'
 import WallContext from '../../context/WallContext'
+import { Container, WallContainer } from './styles'
 
 const Wall = () => {
   const { authTokens } = useContext(WallContext)
   const navigate = useNavigate()
   return (
-    <main>
-      <PostHeader />
-      <PostContainer />
-      {authTokens ? (
-        <PostForm />
-      ) : (
-        <ButtonComponent
-          type="button"
-          name="Sign In"
-          onClick={() => navigate('/')}
-        />
-      )}
-    </main>
+    <WallContainer>
+      <Container>
+        <PostHeader />
+        <PostContainer />
+        {authTokens ? (
+          <PostForm />
+        ) : (
+          <ButtonComponent
+            type="button"
+            name="Sign In"
+            onClick={() => navigate('/')}
+          />
+        )}
+      </Container>
+    </WallContainer>
   )
 }
 
