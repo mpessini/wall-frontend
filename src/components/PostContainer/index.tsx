@@ -1,14 +1,19 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import WallContext from '../../context/WallContext'
 import TextComponent from '../Text'
 import { Post, PostsContainer } from './styles'
 
 const PostContainer = () => {
   const { posts, handleGetPosts } = useContext(WallContext)
+  const bottomRef = useRef<null | HTMLDivElement>(null)
 
   useEffect(() => {
     handleGetPosts()
   }, [])
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [posts])
 
   return (
     <PostsContainer>
@@ -18,6 +23,7 @@ const PostContainer = () => {
           <TextComponent text={post_message} fontSize="25px" />
         </Post>
       ))}
+      <div ref={bottomRef} />
     </PostsContainer>
   )
 }
