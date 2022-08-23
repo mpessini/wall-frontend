@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import WallContext from '../../context/WallContext'
 import ButtonComponent from '../Button'
 import InputComponent from '../Input'
+import { Form } from './styles'
 
 const SignUpForm = () => {
   const { handleSignUp } = useContext(WallContext)
@@ -21,9 +22,9 @@ const SignUpForm = () => {
   }
 
   return (
-    <div>
+    <>
       <ToastContainer />
-      <form onSubmit={(e) => submitSignUp(e)}>
+      <Form onSubmit={(e) => submitSignUp(e)}>
         <InputComponent
           type="text"
           placeholder="Username"
@@ -50,8 +51,8 @@ const SignUpForm = () => {
           required
         />
         <ButtonComponent type="submit" name="Sign Up" />
-      </form>
-    </div>
+      </Form>
+    </>
   )
 }
 export default SignUpForm

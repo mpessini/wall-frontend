@@ -1,14 +1,17 @@
+import { Button } from './styles'
+
 type Props = {
   name: string
   type: 'button' | 'submit'
   onClick?: () => void
+  width?: string
 }
 
-const ButtonComponent = ({ name, type, onClick }: Props) => {
+const ButtonComponent = ({ name, type, onClick, width }: Props) => {
   return (
-    <button type={type} onClick={onClick}>
+    <Button type={type} onClick={onClick} width={width}>
       {name}
-    </button>
+    </Button>
   )
 }
 

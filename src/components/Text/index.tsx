@@ -1,9 +1,11 @@
+import { Text } from './styles'
+
 type Props = {
   text: string
 }
 
 const TextComponent = ({ text }: Props) => {
-  return <p>{text}</p>
+  return <Text>{text}</Text>
 }
 
 export default TextComponent

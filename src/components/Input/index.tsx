@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
+import { Input } from './styles'
 
 type Props = {
   placeholder: string
@@ -20,7 +21,7 @@ const InputComponent = ({
   required
 }: Props) => {
   return (
-    <input
+    <Input
       type={type}
       placeholder={placeholder}
       onChange={({ target }) => onChange(target.value)}
