@@ -1,6 +1,10 @@
 import { useContext } from 'react'
 import Switch from 'react-switch'
 import { ThemeContext } from 'styled-components'
+import moonIcon from '../../assets/moon.png'
+import sunIcon from '../../assets/sun.png'
+import darkLogo from '../../assets/wallDarkLogo.svg'
+import lightLogo from '../../assets/wallLightLogo.svg'
 import { HeaderContainer, ImageLogo, SwitchContainer } from './styles'
 
 type Props = {
@@ -12,7 +16,7 @@ const Header = ({ toggleTheme }: Props) => {
   return (
     <HeaderContainer>
       <ImageLogo
-        src={`/assets/wall-${title}-logo.svg`}
+        src={title === 'light' ? lightLogo : darkLogo}
         alt="Wall Logo"
         width={200}
       />
@@ -30,7 +34,7 @@ const Header = ({ toggleTheme }: Props) => {
               }}
             >
               <img
-                src="/assets/moon.png"
+                src={moonIcon}
                 style={{
                   maxHeight: '100%',
                   marginBottom: '1px',
@@ -49,7 +53,7 @@ const Header = ({ toggleTheme }: Props) => {
               }}
             >
               <img
-                src="/assets/sun.png"
+                src={sunIcon}
                 style={{
                   maxHeight: '100%',
                   marginBottom: '2px',
