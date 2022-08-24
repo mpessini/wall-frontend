@@ -14,7 +14,9 @@ function App() {
   const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light)
 
   const toggleTheme = () => {
-    setTheme(theme === light ? dark : light)
+    console.log(theme)
+
+    setTheme(theme.title === 'light' ? dark : light)
   }
 
   return (
