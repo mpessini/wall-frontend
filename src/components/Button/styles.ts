@@ -18,7 +18,4 @@ export const Button = styled.button<ButtonProps>`
   :hover {
     background-color: ${({ theme }) => theme.colors.secondary};
   }
-  :last-of-type {
-    margin-bottom: 0;
-  }
 `

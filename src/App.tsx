@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import { DefaultTheme, ThemeProvider } from 'styled-components'
+import WallProvider from './context/WallProvider'
 import GlobalStyles from './styles/GlobalStyles'
 import dark from './styles/themes/dark'
 import light from './styles/themes/light'
@@ -20,11 +21,13 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Header toggleTheme={toggleTheme} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/wall" element={<Wall />} />
-      </Routes>
+      <WallProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/wall" element={<Wall />} />
+        </Routes>
+      </WallProvider>
     </ThemeProvider>
   )
 }
