@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { UserCredentials, UserInformations, Headers } from './types'
 
-const baseURL = 'http://localhost:8000/api/'
-const timeout = 5000
+const baseURL = process.env.REACT_APP_API_BASE_ENDPOINT
+const timeout = 10000
 const headers: Headers = {
   'Content-Type': 'application/json'
 }
@@ -21,7 +21,7 @@ export const signUp = async (userInformations: UserInformations) => {
 
 export const updateTokens = async (refresh?: string) => {
   const response = await axiosInstance.post('token/refresh/', {
-    refresh: refresh
+    refresh
   })
   return response
 }
