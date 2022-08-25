@@ -24,9 +24,10 @@ const InputComponent = ({
     <Input
       type={type}
       placeholder={placeholder}
+      aria-label={placeholder}
+      value={value}
       autoComplete={type === 'password' ? 'off' : 'on'}
       onChange={({ target }) => onChange(target.value)}
-      value={value}
       minLength={minLength}
       maxLength={maxLength}
       required={required}

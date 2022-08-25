@@ -9,7 +9,7 @@ type Props = {
 
 const ButtonComponent = ({ name, type, onClick, width }: Props) => {
   return (
-    <Button type={type} onClick={onClick} width={width}>
+    <Button type={type} onClick={onClick} width={width} aria-label={name}>
       {name}
     </Button>
   )
