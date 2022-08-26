@@ -1,15 +1,14 @@
-import { useContext } from 'react'
 import { useNavigate, Navigate } from 'react-router-dom'
 import ButtonComponent from '../../components/Button'
 import SignInForm from '../../components/SignInForm'
 import TextComponent from '../../components/Text'
-import WallContext from '../../context/WallContext'
+import { getFromLocalStorage } from '../../utils/getFromLocalStorage'
 import { Container, HomeContainer } from './styles'
 
 const Home = () => {
-  const { user } = useContext(WallContext)
+  const authTokens = getFromLocalStorage('authTokens')
   const navigate = useNavigate()
-  if (user) return <Navigate to="/wall" />
+  if (authTokens) return <Navigate to="/wall" />
   return (
     <HomeContainer>
       <SignInForm />

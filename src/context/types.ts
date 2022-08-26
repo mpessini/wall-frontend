@@ -4,7 +4,7 @@ export type Props = {
   children: ReactNode
 }
 
-export type AuthToken = {
+export type AuthTokens = {
   refresh: string
   access: string
 }
@@ -34,8 +34,8 @@ export type Context = {
   handleSignUp: (username: string, email: string, password: string) => void
   handlePostCreation: (post: string, token: string) => void
   handleGetPosts: () => void
+  handleUpdateTokens: () => void
   logout: () => void
-  authTokens: AuthToken | null
   user: User | null
   posts: Post[]
 }

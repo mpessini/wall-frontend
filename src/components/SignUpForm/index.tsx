@@ -12,7 +12,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
-  const submitSignUp = async (e: React.FormEvent<HTMLElement>) => {
+  const submitSignUp = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault()
     const anyFieldIsEmpty = [username, email, password].some((field) => !field)
     if (anyFieldIsEmpty) {

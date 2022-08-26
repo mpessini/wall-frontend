@@ -4,8 +4,15 @@ import ButtonComponent from '../Button'
 import TextComponent from '../Text'
 import { UserContainer } from './styles'
 
-const PostHeader = () => {
-  const { logout, user, authTokens } = useContext(WallContext)
+type Props = {
+  authTokens: {
+    refresh: string
+    access: string
+  }
+}
+
+const PostHeader = ({ authTokens }: Props) => {
+  const { logout, user } = useContext(WallContext)
   return (
     <UserContainer>
       <TextComponent

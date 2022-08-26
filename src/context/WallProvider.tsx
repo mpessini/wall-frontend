@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { toast } from 'react-toastify'
 import jwtDecode from 'jwt-decode'
 import { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import WallContext from './WallContext'
-import { AuthToken, Post, Props, User } from './types'
+import { Post, Props, User } from './types'
 import {
   getPosts,
   postCreation,
@@ -15,10 +15,9 @@ import {
 import { getFromLocalStorage } from '../utils/getFromLocalStorage'
 
 function Provider({ children }: Props) {
-  const tokens = getFromLocalStorage('authTokens')
-  const [authTokens, setAuthTokens] = useState<AuthToken | null>(tokens)
+  const authTokens = getFromLocalStorage('authTokens')
   const [user, setUser] = useState<User | null>(
-    tokens ? jwtDecode(tokens.access) : null
+    authTokens ? jwtDecode(authTokens.access) : null
   )
   const [posts, setPosts] = useState<Post[]>([])
 
@@ -27,9 +26,9 @@ function Provider({ children }: Props) {
   const handleSignIn = async (username: string, password: string) => {
     try {
       const { data } = await signIn({ username, password })
-      setAuthTokens(data)
       setUser(jwtDecode(data.access))
       localStorage.setItem('authTokens', JSON.stringify(data))
+      navigate('/wall')
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error?.response?.status === 0) {
@@ -82,7 +81,13 @@ function Provider({ children }: Props) {
     }
   }
 
-  const handleGetPosts = async () => {
+  const logout = useCallback(() => {
+    localStorage.removeItem('authTokens')
+    setUser(null)
+    navigate('/')
+  }, [navigate])
+
+  const handleGetPosts = useCallback(async () => {
     try {
       const { data } = await getPosts()
       setPosts(data)
@@ -93,51 +98,27 @@ function Provider({ children }: Props) {
         logout()
       }, twoAndAHalfSeconds)
     }
-  }
+  }, [logout])
 
-  const logout = () => {
-    setAuthTokens(null)
-    setUser(null)
-    localStorage.removeItem('authTokens')
-    navigate('/')
-  }
-
-  const handleUpdateTokens = async () => {
-    try {
-      const { data, status } = await updateTokens(authTokens?.refresh)
-      if (status === 200) {
-        setAuthTokens(data)
-        setUser(jwtDecode(data.access))
-        localStorage.setItem('authTokens', JSON.stringify(data))
-      }
-    } catch {
-      logout()
-    }
-  }
-
-  useEffect(() => {
+  const handleUpdateTokens = useCallback(async () => {
+    const authTokens = getFromLocalStorage('authTokens')
     if (authTokens) {
-      handleUpdateTokens()
-    }
-  }, [])
-
-  useEffect(() => {
-    const fourMinutes = 4 * 60 * 1000
-    const intervalId = setInterval(() => {
-      if (authTokens) {
-        handleUpdateTokens()
+      try {
+        const { data } = await updateTokens(authTokens?.refresh)
+        localStorage.setItem('authTokens', JSON.stringify(data))
+      } catch {
+        logout()
       }
-    }, fourMinutes)
-    return () => clearInterval(intervalId)
-  }, [authTokens])
+    }
+  }, [logout])
 
   const context = {
     handleSignIn,
     handleSignUp,
     handlePostCreation,
     handleGetPosts,
+    handleUpdateTokens,
     logout,
-    authTokens,
     user,
     posts
   }

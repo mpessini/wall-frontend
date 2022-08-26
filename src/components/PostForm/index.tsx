@@ -4,8 +4,15 @@ import ButtonComponent from '../Button'
 import InputComponent from '../Input'
 import { Form } from './styles'
 
-const PostForm = () => {
-  const { authTokens, handlePostCreation, logout } = useContext(WallContext)
+type Props = {
+  authTokens: {
+    refresh: string
+    access: string
+  }
+}
+
+const PostForm = ({ authTokens }: Props) => {
+  const { handlePostCreation, logout } = useContext(WallContext)
   const [postMessage, setPostMessage] = useState<string>('')
 
   const submitPost = (e: React.FormEvent<HTMLElement>) => {

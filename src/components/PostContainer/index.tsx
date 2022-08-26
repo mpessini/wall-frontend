@@ -9,7 +9,7 @@ const PostContainer = () => {
 
   useEffect(() => {
     handleGetPosts()
-  }, [])
+  }, [handleGetPosts])
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -19,8 +19,8 @@ const PostContainer = () => {
     <PostsContainer>
       {posts.map(({ id, post_message, owner: { username } }) => (
         <Post key={id}>
-          <TextComponent text={username} fontWeight="bold" />
-          <TextComponent text={post_message} fontSize="25px" />
+          <TextComponent text={username} fontWeight="bold" fontSize="25px" />
+          <TextComponent text={post_message} fontSize="18px" />
         </Post>
       ))}
       <div ref={bottomRef} />
