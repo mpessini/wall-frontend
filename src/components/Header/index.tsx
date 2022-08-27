@@ -7,11 +7,11 @@ import darkLogo from '../../assets/wallDarkLogo.svg'
 import lightLogo from '../../assets/wallLightLogo.svg'
 import { HeaderContainer, ImageLogo, SwitchContainer } from './styles'
 
-type Props = {
+type TProps = {
   toggleTheme: () => void
 }
 
-const Header = ({ toggleTheme }: Props) => {
+const Header = ({ toggleTheme }: TProps) => {
   const { colors, title } = useContext(ThemeContext)
   return (
     <HeaderContainer>

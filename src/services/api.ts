@@ -1,20 +1,20 @@
 import axios from 'axios'
-import { UserCredentials, UserInformations, Headers } from './types'
+import { TUserCredentials, TUserInformations, THeaders } from './types'
 
 const baseURL = process.env.REACT_APP_API_BASE_ENDPOINT
 const timeout = 10000
-const headers: Headers = {
+const headers: THeaders = {
   'Content-Type': 'application/json'
 }
 
 const axiosInstance = axios.create({ baseURL, timeout, headers })
 
-export const signIn = async (credentials: UserCredentials) => {
+export const signIn = async (credentials: TUserCredentials) => {
   const response = await axiosInstance.post('token/', credentials)
   return response
 }
 
-export const signUp = async (userInformations: UserInformations) => {
+export const signUp = async (userInformations: TUserInformations) => {
   const response = await axiosInstance.post('signup/', userInformations)
   return response
 }

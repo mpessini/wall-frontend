@@ -1,6 +1,6 @@
 import { createContext } from 'react'
-import { Context } from './types'
+import { TContext } from './types'
 
-const WallContext = createContext({} as Context)
+const WallContext = createContext({} as TContext)
 
 export default WallContext

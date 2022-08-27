@@ -1,21 +1,21 @@
 import { ReactNode } from 'react'
 
-export type Props = {
+export type TProps = {
   children: ReactNode
 }
 
-export type AuthTokens = {
+export type TAuthTokens = {
   refresh: string
   access: string
 }
 
-export type IsLoading = {
+export type TIsLoading = {
   signUp: boolean
   signIn: boolean
   postSubmit: boolean
 }
 
-export type User = {
+export type TUser = {
   exp: number
   iat: number
   jti: string
@@ -24,7 +24,7 @@ export type User = {
   username: string
 }
 
-export type Post = {
+export type TPost = {
   id: number
   owner: {
     id: number
@@ -35,14 +35,14 @@ export type Post = {
   update_at: string
 }
 
-export type Context = {
+export type TContext = {
   handleSignIn: (username: string, password: string) => void
   handleSignUp: (username: string, email: string, password: string) => void
   handlePostCreation: (post: string, token: string) => void
   handleGetPosts: () => void
   handleUpdateTokens: () => void
   logout: () => void
-  user: User | null
-  posts: Post[]
-  isLoading: IsLoading
+  user: TUser | null
+  posts: TPost[]
+  isLoading: TIsLoading
 }

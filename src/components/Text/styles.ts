@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
-type TextProps = {
+type TTextProps = {
   fontSize?: string
   fontFamily?: string
   fontWeight?: string
 }
 
-export const Text = styled.p<TextProps>`
+export const Text = styled.p<TTextProps>`
   font-size: ${({ fontSize }) => (fontSize ? fontSize : '30px')};
   font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : 'sans-serif')};
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : 'normal')};

@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import { Input } from './styles'
 
-type Props = {
+type TProps = {
   placeholder: string
   type: string
   value: string
@@ -21,7 +21,7 @@ const InputComponent = ({
   minLength,
   maxLength,
   required
-}: Props) => {
+}: TProps) => {
   return (
     <Input
       type={type}

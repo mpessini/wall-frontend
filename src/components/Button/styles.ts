@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-type ButtonProps = {
+type TButtonProps = {
   width?: string
 }
 
-export const Button = styled.button<ButtonProps>`
+export const Button = styled.button<TButtonProps>`
   height: 50px;
   min-height: 5vh;
   min-width: 80px;

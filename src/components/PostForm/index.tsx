@@ -4,14 +4,14 @@ import ButtonComponent from '../Button'
 import InputComponent from '../Input'
 import { Form } from './styles'
 
-type Props = {
+type TProps = {
   authTokens: {
     refresh: string
     access: string
   }
 }
 
-const PostForm = ({ authTokens }: Props) => {
+const PostForm = ({ authTokens }: TProps) => {
   const { handlePostCreation, logout, isLoading } = useContext(WallContext)
   const [postMessage, setPostMessage] = useState<string>('')
 

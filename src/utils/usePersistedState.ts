@@ -1,8 +1,8 @@
 import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 
-type Response<T> = [T, Dispatch<SetStateAction<T>>]
+type TResponse<T> = [T, Dispatch<SetStateAction<T>>]
 
-const usePersistedState = <T>(key: string, initialState: T): Response<T> => {
+const usePersistedState = <T>(key: string, initialState: T): TResponse<T> => {
   const [state, setState] = useState(() => {
     const storageValue = localStorage.getItem(key)
 

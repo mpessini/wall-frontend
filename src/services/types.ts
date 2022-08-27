@@ -1,15 +1,15 @@
-export type UserCredentials = {
+export type TUserCredentials = {
   username: string
   password: string
 }
 
-export type UserInformations = {
+export type TUserInformations = {
   username: string
   email: string
   password: string
 }
 
-export type Headers = {
+export type THeaders = {
   'Content-Type': string
   Authorization?: string
 }

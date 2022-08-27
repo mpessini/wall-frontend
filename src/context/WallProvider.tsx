@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode'
 import { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import WallContext from './WallContext'
-import { IsLoading, Post, Props, User } from './types'
+import { TIsLoading, TPost, TProps, TUser } from './types'
 import {
   getPosts,
   postCreation,
@@ -14,13 +14,13 @@ import {
 } from '../services/api'
 import { getFromLocalStorage } from '../utils/getFromLocalStorage'
 
-function Provider({ children }: Props) {
+function Provider({ children }: TProps) {
   const authTokens = getFromLocalStorage('authTokens')
-  const [user, setUser] = useState<User | null>(
+  const [user, setUser] = useState<TUser | null>(
     authTokens ? jwtDecode(authTokens.access) : null
   )
-  const [posts, setPosts] = useState<Post[]>([])
-  const [isLoading, setIsLoading] = useState<IsLoading>({
+  const [posts, setPosts] = useState<TPost[]>([])
+  const [isLoading, setIsLoading] = useState<TIsLoading>({
     signUp: false,
     signIn: false,
     postSubmit: false

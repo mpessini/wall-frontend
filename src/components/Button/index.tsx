@@ -1,7 +1,7 @@
 import { Button } from './styles'
 import CircularProgress from '@mui/material/CircularProgress'
 
-type Props = {
+type TProps = {
   name: string
   type: 'button' | 'submit'
   dataTestId?: string
@@ -17,7 +17,7 @@ const ButtonComponent = ({
   isLoading,
   onClick,
   width
-}: Props) => {
+}: TProps) => {
   return (
     <Button
       type={type}
