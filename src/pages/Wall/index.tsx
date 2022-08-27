@@ -33,6 +33,7 @@ const Wall = () => {
           <ButtonComponent
             type="button"
             name="Sign In"
+            dataTestId="button-signin-navigate"
             onClick={() => navigate('/')}
           />
         )}

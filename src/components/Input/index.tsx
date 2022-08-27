@@ -5,6 +5,7 @@ type Props = {
   placeholder: string
   type: string
   value: string
+  dataTestId?: string
   onChange: Dispatch<SetStateAction<string>>
   minLength?: number
   maxLength?: number
@@ -15,6 +16,7 @@ const InputComponent = ({
   type,
   value,
   placeholder,
+  dataTestId,
   onChange,
   minLength,
   maxLength,
@@ -27,6 +29,7 @@ const InputComponent = ({
       aria-label={placeholder}
       value={value}
       autoComplete={type === 'password' ? 'off' : 'on'}
+      data-testid={dataTestId}
       onChange={({ target }) => onChange(target.value)}
       minLength={minLength}
       maxLength={maxLength}

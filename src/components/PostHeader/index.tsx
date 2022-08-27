@@ -23,6 +23,7 @@ const PostHeader = ({ authTokens }: Props) => {
         <ButtonComponent
           type="button"
           name="Logout"
+          dataTestId="button-logout"
           onClick={logout}
           width="10%"
         />

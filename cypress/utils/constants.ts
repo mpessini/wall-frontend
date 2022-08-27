@@ -1,0 +1,31 @@
+export const INPUT_USERNAME_SIGN_IN = '[data-testid="input-signin-username"]'
+export const INPUT_PASSWORD_SIGN_IN = '[data-testid="input-signin-password"]'
+export const INPUT_USERNAME_SIGN_UP = '[data-testid="input-signup-username"]'
+export const INPUT_EMAIL_SIGN_UP = '[data-testid="input-signup-email"]'
+export const INPUT_PASSWORD_SIGN_UP = '[data-testid="input-signup-password"]'
+export const INPUT_POST_CREATION = '[data-testid="input-post-message"]'
+
+export const BUTTON_SIGN_IN = '[data-testid="button-signin"]'
+export const BUTTON_SIGN_UP = '[data-testid="button-signup"]'
+export const BUTTON_POST_CREATION = '[data-testid="button-post-submit"]'
+export const BUTTON_SIGN_UP_NAVIGATE = '[data-testid="button-signup-navigate"]'
+export const BUTTON_VISITOR_NAVIGATE = '[data-testid="button-visitor-navigate"]'
+export const BUTTON_SIGN_IN_NAVIGATE = '[data-testid="button-signin-navigate"]'
+export const BUTTON_LOGOUT = '[data-testid="button-logout"]'
+
+export const POST = '[data-testid="post"]'
+
+export const VALID_USERNAME = 'validUsername'
+export const VALID_PASSWORD = 'validUsername'
+export const VALID_EMAIL = 'valid@email.com'
+export const INVALID_USERNAME = 'invalidUsername'
+export const INVALID_PASSWORD = 'invalidUsername'
+export const INVALID_EMAIL = 'invalid@email'
+
+export const HOME_ROUTE = '/'
+export const SIGN_UP_ROUTE = '/signup'
+export const WALL_ROUTE = '/wall'
+
+export const TOKEN_ENDPOINT = '**/token/**'
+export const SIGN_UP_ENDPOINT = '**/signup/'
+export const POSTS_ENDPOINT = '**/posts/'

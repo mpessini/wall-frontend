@@ -17,12 +17,14 @@ const Home = () => {
         <ButtonComponent
           type="button"
           name="Sign Up"
+          dataTestId="button-signup-navigate"
           onClick={() => navigate('/signup')}
         />
         <TextComponent text="Just want to take a look?" fontFamily="cursive" />
         <ButtonComponent
           type="button"
           name="Enter as a Visitor"
+          dataTestId="button-visitor-navigate"
           onClick={() => navigate('/wall')}
         />
       </Container>

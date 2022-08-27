@@ -31,11 +31,17 @@ const PostForm = ({ authTokens }: Props) => {
           type="text"
           placeholder="Write your message..."
           value={postMessage}
+          dataTestId="input-post-message"
           onChange={setPostMessage}
           minLength={1}
           required
         />
-        <ButtonComponent type="submit" name="Send" width="20%" />
+        <ButtonComponent
+          type="submit"
+          name="Send"
+          width="20%"
+          dataTestId="button-post-submit"
+        />
       </Form>
     </>
   )

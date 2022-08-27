@@ -1,0 +1,102 @@
+[
+  {
+    "id":1,
+    "owner":{
+      "id":1,
+      "username":"User1"
+    },
+    "post_message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "created_at":"2022-08-23T14:14:06.615450Z",
+    "update_at":"2022-08-23T14:14:06.615508Z"
+  },
+  {
+    "id":2,
+    "owner":{
+      "id":2,
+      "username":"User2"
+    },
+    "post_message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "created_at":"2022-08-23T14:14:06.615450Z",
+    "update_at":"2022-08-23T14:14:06.615508Z"
+  },
+  {
+    "id":3,
+    "owner":{
+      "id":3,
+      "username":"User3"
+    },
+    "post_message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "created_at":"2022-08-23T14:14:06.615450Z",
+    "update_at":"2022-08-23T14:14:06.615508Z"
+  },
+  {
+    "id":4,
+    "owner":{
+      "id":1,
+      "username":"User1"
+    },
+    "post_message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "created_at":"2022-08-23T14:14:06.615450Z",
+    "update_at":"2022-08-23T14:14:06.615508Z"
+  },
+  {
+    "id":5,
+    "owner":{
+      "id":1,
+      "username":"User1"
+    },
+    "post_message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "created_at":"2022-08-23T14:14:06.615450Z",
+    "update_at":"2022-08-23T14:14:06.615508Z"
+  },
+  {
+    "id":6,
+    "owner":{
+      "id":3,
+      "username":"User3"
+    },
+    "post_message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "created_at":"2022-08-23T14:14:06.615450Z",
+    "update_at":"2022-08-23T14:14:06.615508Z"
+  },
+  {
+    "id":7,
+    "owner":{
+      "id":3,
+      "username":"User3"
+    },
+    "post_message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "created_at":"2022-08-23T14:14:06.615450Z",
+    "update_at":"2022-08-23T14:14:06.615508Z"
+  },
+  {
+    "id":8,
+    "owner":{
+      "id":1,
+      "username":"User1"
+    },
+    "post_message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "created_at":"2022-08-23T14:14:06.615450Z",
+    "update_at":"2022-08-23T14:14:06.615508Z"
+  },
+  {
+    "id":9,
+    "owner":{
+      "id":2,
+      "username":"User2"
+    },
+    "post_message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "created_at":"2022-08-23T14:14:06.615450Z",
+    "update_at":"2022-08-23T14:14:06.615508Z"
+  },
+  {
+    "id":10,
+    "owner":{
+      "id":1,
+      "username":"User1"
+    },
+    "post_message":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "created_at":"2022-08-23T14:14:06.615450Z",
+    "update_at":"2022-08-23T14:14:06.615508Z"
+  }
+]

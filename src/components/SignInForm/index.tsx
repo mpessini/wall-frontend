@@ -28,6 +28,7 @@ const SignInForm = () => {
           type="text"
           placeholder="Username"
           value={username}
+          dataTestId="input-signin-username"
           onChange={setUsername}
           required
         />
@@ -35,10 +36,15 @@ const SignInForm = () => {
           type="password"
           placeholder="Password"
           value={password}
+          dataTestId="input-signin-password"
           onChange={setPassword}
           required
         />
-        <ButtonComponent type="submit" name="Sign In" />
+        <ButtonComponent
+          type="submit"
+          name="Sign In"
+          dataTestId="button-signin"
+        />
       </Form>
     </>
   )

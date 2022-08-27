@@ -29,6 +29,7 @@ const SignUpForm = () => {
           type="text"
           placeholder="Username"
           value={username}
+          dataTestId="input-signup-username"
           onChange={setUsername}
           minLength={3}
           maxLength={24}
@@ -38,6 +39,7 @@ const SignUpForm = () => {
           type="email"
           placeholder="Email"
           value={email}
+          dataTestId="input-signup-email"
           onChange={setEmail}
           required
         />
@@ -45,12 +47,17 @@ const SignUpForm = () => {
           type="password"
           placeholder="Password"
           value={password}
+          dataTestId="input-signup-password"
           onChange={setPassword}
           minLength={8}
           maxLength={50}
           required
         />
-        <ButtonComponent type="submit" name="Sign Up" />
+        <ButtonComponent
+          type="submit"
+          name="Sign Up"
+          dataTestId="button-signup"
+        />
       </Form>
     </>
   )

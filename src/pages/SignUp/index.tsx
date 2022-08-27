@@ -14,6 +14,7 @@ const SignUp = () => {
         <ButtonComponent
           type="button"
           name="Back To Login"
+          dataTestId="button-signin-navigate"
           onClick={() => navigate('/')}
         />
       </Container>

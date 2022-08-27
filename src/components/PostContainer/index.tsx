@@ -18,7 +18,7 @@ const PostContainer = () => {
   return (
     <PostsContainer>
       {posts.map(({ id, post_message, owner: { username } }) => (
-        <Post key={id}>
+        <Post key={id} data-testid="post">
           <TextComponent text={username} fontWeight="bold" fontSize="25px" />
           <TextComponent text={post_message} fontSize="18px" />
         </Post>
