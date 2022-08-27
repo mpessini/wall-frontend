@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode'
 import { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import WallContext from './WallContext'
-import { Post, Props, User } from './types'
+import { IsLoading, Post, Props, User } from './types'
 import {
   getPosts,
   postCreation,
@@ -20,10 +20,16 @@ function Provider({ children }: Props) {
     authTokens ? jwtDecode(authTokens.access) : null
   )
   const [posts, setPosts] = useState<Post[]>([])
+  const [isLoading, setIsLoading] = useState<IsLoading>({
+    signUp: false,
+    signIn: false,
+    postSubmit: false
+  })
 
   const navigate = useNavigate()
 
   const handleSignIn = async (username: string, password: string) => {
+    setIsLoading({ ...isLoading, signIn: true })
     try {
       const { data } = await signIn({ username, password })
       setUser(jwtDecode(data.access))
@@ -36,6 +42,8 @@ function Provider({ children }: Props) {
         }
         toast.error('Incorrect username or password')
       }
+    } finally {
+      setIsLoading({ ...isLoading, signIn: false })
     }
   }
 
@@ -44,6 +52,7 @@ function Provider({ children }: Props) {
     email: string,
     password: string
   ) => {
+    setIsLoading({ ...isLoading, signUp: true })
     try {
       await signUp({ username, email, password })
       toast.success('User created, you will be redirected')
@@ -61,10 +70,13 @@ function Provider({ children }: Props) {
           toast.error(`${error[0]}: ${error[1]}`)
         })
       }
+    } finally {
+      setIsLoading({ ...isLoading, signUp: false })
     }
   }
 
   const handlePostCreation = async (post: string, token: string) => {
+    setIsLoading({ ...isLoading, postSubmit: true })
     try {
       await postCreation(post, token)
       handleGetPosts()
@@ -78,6 +90,8 @@ function Provider({ children }: Props) {
           toast.error(`${error[0]}: ${error[1]}`)
         })
       }
+    } finally {
+      setIsLoading({ ...isLoading, postSubmit: false })
     }
   }
 
@@ -118,6 +132,7 @@ function Provider({ children }: Props) {
     handlePostCreation,
     handleGetPosts,
     handleUpdateTokens,
+    isLoading,
     logout,
     user,
     posts

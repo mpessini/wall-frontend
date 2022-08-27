@@ -7,7 +7,7 @@ import InputComponent from '../Input'
 import { Form } from './styles'
 
 const SignUpForm = () => {
-  const { handleSignUp } = useContext(WallContext)
+  const { handleSignUp, isLoading } = useContext(WallContext)
   const [username, setUsername] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -57,6 +57,7 @@ const SignUpForm = () => {
           type="submit"
           name="Sign Up"
           dataTestId="button-signup"
+          isLoading={isLoading.signUp}
         />
       </Form>
     </>

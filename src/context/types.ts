@@ -9,6 +9,12 @@ export type AuthTokens = {
   access: string
 }
 
+export type IsLoading = {
+  signUp: boolean
+  signIn: boolean
+  postSubmit: boolean
+}
+
 export type User = {
   exp: number
   iat: number
@@ -38,4 +44,5 @@ export type Context = {
   logout: () => void
   user: User | null
   posts: Post[]
+  isLoading: IsLoading
 }

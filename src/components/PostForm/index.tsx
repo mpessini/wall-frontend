@@ -12,7 +12,7 @@ type Props = {
 }
 
 const PostForm = ({ authTokens }: Props) => {
-  const { handlePostCreation, logout } = useContext(WallContext)
+  const { handlePostCreation, logout, isLoading } = useContext(WallContext)
   const [postMessage, setPostMessage] = useState<string>('')
 
   const submitPost = (e: React.FormEvent<HTMLElement>) => {
@@ -41,6 +41,7 @@ const PostForm = ({ authTokens }: Props) => {
           name="Send"
           width="20%"
           dataTestId="button-post-submit"
+          isLoading={isLoading.postSubmit}
         />
       </Form>
     </>

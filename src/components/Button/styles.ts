@@ -18,4 +18,7 @@ export const Button = styled.button<ButtonProps>`
   :hover {
     background-color: ${({ theme }) => theme.colors.secondary};
   }
+  :disabled {
+    background-color: #81999b;
+  }
 `
