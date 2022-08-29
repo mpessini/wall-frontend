@@ -8,7 +8,7 @@
 ![Wall](wall.png)
 
 In this project users can create a new account, sign in or enter as a visitor. Users can create a post on a wall if they are logged, or just read the posts, if they aren't.
-This project are built using [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/),  [Styled Components](https://styled-components.com/) and [Cypress](https://docs.cypress.io/)
+This project was built using [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/),  [Styled Components](https://styled-components.com/) and [Cypress](https://docs.cypress.io/)
 
 ## Installation
 
