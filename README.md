@@ -47,7 +47,7 @@ yarn start
 
 ## Tests
 This project uses cypress for testing. Cypress is an end2end testing tool.
-- To run the project tests, make sure your application is running at `http://localhost:3000`. If you want change the application test url, to change the key `baseUrl` in `cypress.config.ts` to your application url.
+- To run the project tests, make sure your application is running at `http://localhost:3000`. If you want to change the application test url, change the key `baseUrl` in `cypress.config.ts` to your application url.
 
 - Tests are isolated from backend in this project, so you can run without backend connection.
 
