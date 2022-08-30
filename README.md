@@ -74,4 +74,4 @@ yarn run cy:open
 * [Linkedin](https://www.linkedin.com/in/marcelopessini/)
 
 ## Thank you TSL
-- I really enjoy build this application.
+- I really enjoyed building this application.
