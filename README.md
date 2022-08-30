@@ -25,7 +25,7 @@ cd wall-frontend
 ```
 
 3. Install project dependencies
-- recommended run `nvm use` before install dependencies, to use the same node version of project.
+- If you have nvm installed, recommended run `nvm use` before install dependencies, to use the same node version of project, if you don't, recommended use node version 16.17.0(lts/gallium).
 ```bash
 npm install
 ```
